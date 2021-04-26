@@ -1,0 +1,35 @@
+---
+title: "testing"
+author: "Dylan Bowerman - `dbowerman7652@floridapoly.edu`"
+date: "4/26/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r message=FALSE, warning=FALSE}
+counting <- read_csv("C:\\Users\\beach\\git\\SP_2021\\data_science_final\\data\\counting_raw.csv")
+
+counting <- counting%>%
+  mutate(Date = as.POSIXct(strptime(Date,"%Y/%m/%d %H:%M")))%>%
+  mutate(Delay=difftime(Date,lag(Date),units="mins"))%>%
+  mutate(Attachments=NULL,Reactions=NULL)
+
+hundreds <- counting%>%
+  filter(Content%%100==0)%>%
+  select(-Delay)%>%
+  mutate(Delay=difftime(Date,lag(Date),units="mins"))
+
+thousands <- counting%>%
+  filter(Content%%1000==0)%>%
+  select(-Delay)%>%
+  mutate(Delay=difftime(Date,lag(Date),units="mins"))
+```
+
+```{r}
+c("Average time between 2 adjacent numbers (mins)", round(sum(counting$Delay,na.rm=T)/nrow(counting),1))
+c("Minimum time between 2 adjacent numbers (mins)", round(min(counting$Delay,na.rm=T),1))
+c("Maximum time between 2 adjacent numbers (hrs)", round(max(counting$Delay,na.rm=T)/60,1))
+```
