@@ -303,24 +303,24 @@ abstract
 A useful way to analyze any dataset is with visualization, so I generated a few of those to help convey some information that would otherwise be clunky to convey.
 
 ### Numbers Counted by Hour of Day
-One of the things I was intered in seeing is how the rate at which numbers are sent varies by time of day. Are more numbers counted at 8 PM than 3 AM? Probably. But I'd like to see it. Do do this, i generate a `Hour` variable, as I have many times before, and group and summarize from that. Then, I plot a bar graph with the `Hour` on the X axis and the number of `Counts` on the Y axis.
+One of the things I was interested in seeing is how the rate at which numbers are sent varies by time of day. Are more numbers counted at 8 PM than 3 AM? Probably. But I'd like to see it. Do do this, I generate a `Hour` variable, as I have many times before, and group and summarize from that. Then, I plot a bar graph with the `Hour` on the X axis and the number of `Counts` on the Y axis. I also make it Poly Purple (for fun)!
 ```{r, echo=FALSE}
 counting%>%
   mutate(Hour=hour(Date))%>%
   group_by(Hour)%>%
   summarize(Counts=n())%>%
-  ggplot(aes(x=Hour,y=Counts))+ggtitle("Numbers Counted by Hour of Day")+geom_col()
+  ggplot(aes(x=Hour,y=Counts))+ggtitle("Numbers Counted by Hour of Day")+geom_col(fill="#532d8e")
 ```
 From this, we can see that counting slows down very much at night, which makes sense, and it also serves to verify our information we concluded earlier regarding the most and least popular hours for counting. Counting is also very popular in the late evening, with the peak being at 10 PM! This makes sense to me, because that is when I am awake, on the internet, and bored.
 
 ### Numbers Counted by Week of Year
-Another statistic I was interested in calculating is the numbers counted over the whole year. Notably, this is almost exactly 1 year worth of data. I used week numbers to track this, so the first step is to mutate a column with that information. I then group and summarize that. I create a bar graph with `Week` on the X axis and `Counts` on the Y axis.
+Another statistic I was interested in calculating is the numbers counted over the whole year. Notably, this is almost exactly 1 year worth of data. I used week numbers to track this, so the first step is to mutate a column with that information. I then group and summarize that. I create a bar graph with `Week` on the X axis and `Counts` on the Y axis. Poly Purple again, too!
 ```{r}
 counting%>%
   mutate(Week=week(Date))%>%
   group_by(Week)%>%
   summarize(Counts=n())%>%
-  ggplot(aes(x=Week,y=Counts))+ggtitle("Numbers Counted by Week of Year")+geom_col()
+  ggplot(aes(x=Week,y=Counts))+ggtitle("Numbers Counted by Week of Year")+geom_col(fill="#532d8e")
 ```
 It seems counting was very slow in the summer, with just a few numbers being counted each week in weeks 31-33. It then picked up and spiked big time in weeks 41-44, which should be around October. Maybe this is because people were settled into their new school schedules (where applicable)? Possibly.
 Looking at the graph, it would appear that counting increased dramatically between weeks 17 and 18 as well. After requesting that data numerically, it seems to confirm that.
