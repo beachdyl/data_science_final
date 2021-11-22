@@ -259,7 +259,7 @@ pcatmaxhr <- counting%>%
 ```
 
 #### Numbers Skipped
-Fourth, I'd like to see how many numbers do not appear in this data, but should. This could be caused by an unknown entity removing them from the forum itself, or an issue with data collection. It oculd also just be the moderator robot not catching a missed number (which is unlikely, given how robots are). I do this later in the process by subtracting the number of rows in `counting` from the largest number in `counting`.
+Fourth, I'd like to see how many numbers do not appear in this data, but should. This could be caused by an unknown entity removing them from the forum itself, or an issue with data collection. It could also just be the moderator robot not catching a missed number (which is unlikely, given how robots are). I do this later in the process by subtracting the number of rows in `counting` from the largest number in `counting`.
 
 #### Longest 1 Minute Streak
 Fifth, I'd like to see how many numbers the users were able to fit into a single minute timespan at maximum. To do this, I group the data in `counting` by `Date` and summarize that by counting the number of rows associated with each timestamp. From there, it is simple to filter it to the largest value of `Counts`. The results are saved in `maxc1min`, which translates roughly to "__max__imum __n__umbers __c__ounted in __1__ __min__ute."
@@ -334,7 +334,7 @@ counting%>%
 That is a nearly 10x increase in counting between the two weeks! However, this is a trap. There is no relationship between the two weeks, because this data _begins_ in Week 18 of 2020 (which has 53 weeks, by the way) and _ends_ at Week 17 of 2021. This makes it convenient to view an entire year, but does hide the fact that week 17 does not lead at all into week 18. In fact, they are as far apart as they possibly can be.
 This also could explain week 18 being so tall. At that point in time, the counting experiment was brand new. People may have been excited to try it out, or been rushing to complete the milestones I discussed earlier. Incentives and marketing were likely high to start the project, possibly fueling a rapid start.
 
-### Distribution of NUmbers Counted by Top 10 Users
+### Distribution of Numbers Counted by Top 10 Users
 Remembering that the users had access to a scoreboard that incremented when they counted a number, some users were undoubtedly inclined to do _lots_ of counting with the motivation of taking the top spots on that scoreboard. I would like to see how the numbers are distributed among the users in the top 10 spots of the leaderboard. First, I must group and summarize the data in ` counting` by the `Author` field, which is the user that sent the message. I then mutate a new variable called `Percent` which is just an individual user's numbers counted divided by the total of rows in `counting` (times 100 to make a percent). I then arrange that in descending order and chop off all but the top 10 users. Let's look at that data.
 ```{r}
 counting%>%
