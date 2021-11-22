@@ -10,6 +10,6 @@ Author | The full username of the account that posted the message | This include
 Date | The timestamp of the message | This is to the nearest minute. All seconds values are 00.
 Content | The message itself | This is (or at least should be) the number that was counted
 Reactions | Embedded reactions to the message | I removed this attribute in pre-processing because it was always empty
-Attachaments | Attachments to teh message | I removed this attribute in pre-processing becasue it was always empty
+Attachaments | Attachments to the message | I removed this attribute in pre-processing becasue it was always empty
 
 All this data is publicly available, but you do have to be a member of the server to get it. I say it is public because anybody can become a member without verification or oversight. You just join.
