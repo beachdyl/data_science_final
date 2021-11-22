@@ -204,7 +204,7 @@ counting%>%
 Here we can see that it was counted apparently 24 minutes _prior to_ the number before it. A quick Google search reveals that November 1st, 2020, the timestamp associated with this discrepancy, was, in fact, the day daylight saving time ended. My guess for where it got -84 is that it took the -24 minute difference between the two messages and added 60 more because of the lost hour of daylight saving time.
 
 #### "But wait, there's more!"
-In looking at that snapshot of the data we cal also see that the number following our problem number (20727) is also a bit strange! It appears to have occurred 29 minutes after the number preceding it. 01:01 to 01:40. However, yet again it shows up as 99 minutes of `Delay`. Noting that 99 = 29 + 60, I once again conclude that this was an error of processing caused by the mysteries that daylight saving time introduces to the dataset.
+In looking at that snapshot of the data we can also see that the number following our problem number (20727) is also a bit strange! It appears to have occurred 29 minutes after the number preceding it. 01:01 to 01:40. However, yet again it shows up as 99 minutes of `Delay`. Noting that 99 = 29 + 60, I once again conclude that this was an error of processing caused by the mysteries that daylight saving time introduces to the dataset.
 
 #### Just in Case...
 Just in case this happened again, I'd like to check to see if this type of error occurred on the next day where daylight saving time became relevant, which is March 14, 2021.
